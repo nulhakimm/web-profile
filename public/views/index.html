@@ -18,6 +18,7 @@
 
     .profile-img img {
       width: 150px;
+      height: 150px;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -78,16 +79,16 @@
     <div class="row text-center">
       <div class="col-md-4 offset-md-4">
         <div class="profile-img">
-          <img src="./avatar.jpg" alt="Profile Picture" class="img-fluid">
+          <img src="./assets/avatar.jpg" alt="Profile Picture" class="img-fluid">
         </div>
-        <h2 class="mt-3">Your Name</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel lacus ut risus aliquet volutpat.</p>
-        <p>Email: <a href="mailto:youremail@example.com" class="btn-link">youremail@example.com</a></p>
-        <p>Phone: +123 456 7890</p>
+        <h2 class="mt-3">{{.Name}}</h2>
+        <p>{{.Description}}</p>
+        <p>Email: <a href="mailto:{{.Email}}" class="btn-link">{{.Email}}</a></p>
+        <p>Phone: {{.Phone}}</p>
         <div>
-          <a href="https://linkedin.com/in/yourprofile" class="btn-link" target="_blank">LinkedIn</a> |
-          <a href="https://twitter.com/yourprofile" class="btn-link" target="_blank">Twitter</a> |
-          <a href="https://github.com/yourprofile" class="btn-link" target="_blank">GitHub</a>
+          <a href="{{.SocialMedia.LinkedIn}}" class="btn-link" target="_blank">LinkedIn</a> |
+          <a href="{{.SocialMedia.Instagram}}" class="btn-link" target="_blank">Instagram</a> |
+          <a href="{{.SocialMedia.GitHub}}" class="btn-link" target="_blank">GitHub</a>
         </div>
       </div>
     </div>
@@ -95,8 +96,7 @@
       <div class="col-md-8 offset-md-2">
         <div class="profile">
           <h3>Profile</h3>
-          <p>Hello! I am [Your Name], a passionate [Your Profession] with experience in [your field or specialization].
-            I love creating beautiful and functional websites, applications, and designs. Welcome to my portfolio!</p>
+          <p>{{.About}}</p>
         </div>
         <div class="skills">
           <h3>Skills</h3>
