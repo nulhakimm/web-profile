@@ -81,14 +81,14 @@
         <div class="profile-img">
           <img src="./assets/avatar.jpg" alt="Profile Picture" class="img-fluid">
         </div>
-        <h2 class="mt-3">{{.Name}}</h2>
-        <p>{{.Description}}</p>
-        <p>Email: <a href="mailto:{{.Email}}" class="btn-link">{{.Email}}</a></p>
-        <p>Phone: {{.Phone}}</p>
+        <h2 class="mt-3">{{.Profile.Name}}</h2>
+        <p>{{.Profile.Description}}</p>
+        <p>Email: <a href="mailto:{{.Profile.Email}}" class="btn-link">{{.Profile.Email}}</a></p>
+        <p>Phone: {{.Profile.Phone}}</p>
         <div>
-          <a href="{{.SocialMedia.LinkedIn}}" class="btn-link" target="_blank">LinkedIn</a> |
-          <a href="{{.SocialMedia.Instagram}}" class="btn-link" target="_blank">Instagram</a> |
-          <a href="{{.SocialMedia.GitHub}}" class="btn-link" target="_blank">GitHub</a>
+          <a href="{{.Profile.SocialMedia.LinkedIn}}" class="btn-link" target="_blank">LinkedIn</a> |
+          <a href="{{.Profile.SocialMedia.Instagram}}" class="btn-link" target="_blank">Instagram</a> |
+          <a href="{{.Profile.SocialMedia.GitHub}}" class="btn-link" target="_blank">GitHub</a>
         </div>
       </div>
     </div>
@@ -96,7 +96,7 @@
       <div class="col-md-8 offset-md-2">
         <div class="profile">
           <h3>Profile</h3>
-          <p>{{.About}}</p>
+          <p>{{.Profile.About}}</p>
         </div>
         <div class="skills">
           <h3>Skills</h3>
@@ -109,15 +109,14 @@
         <div class="experience">
           <h3>Experience</h3>
           <ul>
-            <li><strong>Company Name</strong> - [Job Title] (Year-Year)
-              <p>Brief description of your role and achievements.</p>
+            {{range .Skill}}
+            <li><strong>{{.CompanyName}}</strong> - {{.Title}} ({{.EntryYear}}-{{.OutYear}})
+              <p>{{.Address}}</p>
+              {{range .JobDesk}}
+              <p>{{.}}</p>
+              {{end}}
             </li>
-            <li><strong>Company Name</strong> - [Job Title] (Year-Year)
-              <p>Brief description of your role and achievements.</p>
-            </li>
-            <li><strong>Company Name</strong> - [Job Title] (Year-Year)
-              <p>Brief description of your role and achievements.</p>
-            </li>
+            {{end}}
           </ul>
         </div>
         <div class="education">

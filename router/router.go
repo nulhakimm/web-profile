@@ -15,9 +15,12 @@ func SetupRoute(app *fiber.App) {
 		panic(err)
 	}
 
+	skillRepo := repository.NewSkillRepo()
+	serviceRepo := service.NewSkillService(skillRepo, client)
+
 	profileRepo := repository.NewProfileRepo()
 	profileService := service.NewProfileService(profileRepo, client)
-	profileController := controller.NewProfileController(profileService)
+	profileController := controller.NewProfileController(profileService, serviceRepo)
 
 	app.Get("/", profileController.ProfileRender)
 

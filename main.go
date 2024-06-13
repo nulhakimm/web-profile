@@ -13,31 +13,23 @@ func main() {
 	// 	panic(err)
 	// }
 
-	// repo := repository.NewProfileRepo()
-	// service := service.NewProfileService(repo, db)
+	// skillRepo := repository.NewSkillRepo()
+	// skillService := service.NewSkillService(skillRepo, db)
 
-	// profile := &web.ProfileCreate{
-	// 	Name:        "nullhakim",
-	// 	Description: "hello i'am fresh graduate",
-	// 	Email:       "nullhakim@mail.com",
-	// 	SocialMedia: web.SocialMedia{
-	// 		LinkedIn:  "linkedin.com/nullhakim",
-	// 		Instagram: "instagram.com/nullhakim",
-	// 		GitHub:    "github.com/nullhakim",
+	// skill := web.SkillCreate{
+	// 	CompanyName: "Company 2",
+	// 	Address:     "Jl. Address 01023",
+	// 	Title:       "Manager Comedy",
+	// 	EntryYear:   "2022",
+	// 	OutYear:     "Present",
+	// 	JobDesk: []string{
+	// 		"Give The Boss Comedy",
+	// 		"Roasting Boss",
+	// 		"Roasting All Employee",
 	// 	},
-	// 	Phone: "289-2594-4458-554",
-	// 	About: `Lorem Ipsum is simply dummy text of the
-	// 	printing and typesetting industry.
-	// 	Lorem Ipsum has been the industry's standard
-	// 	dummy text ever since the 1500s,
-	// 	when an unknown printer took a galley of type and
-	// 	scrambled it to make a type specimen book`,
 	// }
 
-	// err = service.Save(context.Background(), profile)
-	// if err != nil {
-	// 	panic(err)
-	// }
+	// skillService.Save(context.Background(), &skill)
 
 	engine := html.New("./public/views", ".html")
 

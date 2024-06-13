@@ -13,11 +13,13 @@ type ProfileController interface {
 
 type ProfileControllerImpl struct {
 	ProfileService service.ProfileService
+	SkillService   service.SkillService
 }
 
-func NewProfileController(profileService service.ProfileService) ProfileController {
+func NewProfileController(profileService service.ProfileService, skillService service.SkillService) ProfileController {
 	return &ProfileControllerImpl{
 		ProfileService: profileService,
+		SkillService:   skillService,
 	}
 }
 
@@ -25,9 +27,17 @@ func (controller *ProfileControllerImpl) ProfileRender(ctx *fiber.Ctx) error {
 
 	profile, err := controller.ProfileService.FindProfile(ctx.Context(), "nullhakim")
 	if err != nil {
-		return fmt.Errorf("failed get all data : %v", err)
+		return err
 	}
 
-	return ctx.Render("index", profile)
+	skill, err := controller.SkillService.Find(ctx.Context())
+	if err != nil {
+		return fmt.Errorf("failed get all data skill : %v", err)
+	}
+
+	return ctx.Render("index", fiber.Map{
+		"Profile": profile,
+		"Skill":   skill,
+	})
 
 }
