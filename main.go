@@ -13,10 +13,10 @@ func main() {
 	// 	panic(err)
 	// }
 
-	// skillRepo := repository.NewSkillRepo()
-	// skillService := service.NewSkillService(skillRepo, db)
+	// skillRepo := repository.NewExperienceRepo()
+	// skillService := service.NewExperienceService(skillRepo, db)
 
-	// skill := web.SkillCreate{
+	// experience := web.ExperienceCreate{
 	// 	CompanyName: "Company 2",
 	// 	Address:     "Jl. Address 01023",
 	// 	Title:       "Manager Comedy",
@@ -29,7 +29,7 @@ func main() {
 	// 	},
 	// }
 
-	// skillService.Save(context.Background(), &skill)
+	// skillService.Save(context.Background(), &experience)
 
 	engine := html.New("./public/views", ".html")
 

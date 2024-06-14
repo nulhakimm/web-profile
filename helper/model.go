@@ -22,26 +22,26 @@ func ToProfileResponse(profile *domain.Profile) *web.ProfileResponse {
 
 }
 
-func ToSkillResponse(skill *domain.Skill) *web.SkillResponse {
+func ToExperienceResponse(experience *domain.Experience) *web.ExperienceResponse {
 
-	return &web.SkillResponse{
-		CompanyName: skill.CompanyName,
-		Address:     skill.Address,
-		Title:       skill.Title,
-		EntryYear:   skill.EntryYear,
-		OutYear:     skill.OutYear,
-		JobDesk:     skill.JobDesk,
+	return &web.ExperienceResponse{
+		CompanyName: experience.CompanyName,
+		Address:     experience.Address,
+		Title:       experience.Title,
+		EntryYear:   experience.EntryYear,
+		OutYear:     experience.OutYear,
+		JobDesk:     experience.JobDesk,
 	}
 
 }
 
-func ToSkillResponses(skills []*domain.Skill) []*web.SkillResponse {
+func ToExperienceResponses(experiences []*domain.Experience) []*web.ExperienceResponse {
 
-	skillResponses := []*web.SkillResponse{}
-	for _, skill := range skills {
-		skillResponses = append(skillResponses, ToSkillResponse(skill))
+	experienceResponses := []*web.ExperienceResponse{}
+	for _, experience := range experiences {
+		experienceResponses = append(experienceResponses, ToExperienceResponse(experience))
 	}
 
-	return skillResponses
+	return experienceResponses
 
 }

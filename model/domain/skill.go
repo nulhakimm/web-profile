@@ -1,6 +1,6 @@
 package domain
 
-type Skill struct {
+type Experience struct {
 	CompanyName string
 	Address     string
 	Title       string

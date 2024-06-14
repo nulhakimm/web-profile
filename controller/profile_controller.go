@@ -12,14 +12,14 @@ type ProfileController interface {
 }
 
 type ProfileControllerImpl struct {
-	ProfileService service.ProfileService
-	SkillService   service.SkillService
+	ProfileService    service.ProfileService
+	ExperienceService service.ExperienceService
 }
 
-func NewProfileController(profileService service.ProfileService, skillService service.SkillService) ProfileController {
+func NewProfileController(profileService service.ProfileService, ExperienceService service.ExperienceService) ProfileController {
 	return &ProfileControllerImpl{
-		ProfileService: profileService,
-		SkillService:   skillService,
+		ProfileService:    profileService,
+		ExperienceService: ExperienceService,
 	}
 }
 
@@ -30,14 +30,14 @@ func (controller *ProfileControllerImpl) ProfileRender(ctx *fiber.Ctx) error {
 		return err
 	}
 
-	skill, err := controller.SkillService.Find(ctx.Context())
+	experience, err := controller.ExperienceService.Find(ctx.Context())
 	if err != nil {
-		return fmt.Errorf("failed get all data skill : %v", err)
+		return fmt.Errorf("failed get all data experience : %v", err)
 	}
 
 	return ctx.Render("index", fiber.Map{
-		"Profile": profile,
-		"Skill":   skill,
+		"Profile":    profile,
+		"Experience": experience,
 	})
 
 }

@@ -15,8 +15,8 @@ func SetupRoute(app *fiber.App) {
 		panic(err)
 	}
 
-	skillRepo := repository.NewSkillRepo()
-	serviceRepo := service.NewSkillService(skillRepo, client)
+	experienceRepo := repository.NewExperienceRepo()
+	serviceRepo := service.NewExperienceService(experienceRepo, client)
 
 	profileRepo := repository.NewProfileRepo()
 	profileService := service.NewProfileService(profileRepo, client)
