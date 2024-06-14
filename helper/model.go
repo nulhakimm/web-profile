@@ -63,3 +63,25 @@ func ToSkillResponses(skills []*domain.Skill) []*web.SkillResponse {
 	return skillResponses
 
 }
+
+func ToEducationResponse(education *domain.Education) *web.EducationResponse {
+	return &web.EducationResponse{
+		Name:      education.Name,
+		Address:   education.Address,
+		EntryYear: education.EntryYear,
+		OutYear:   education.OutYear,
+		Title:     education.Title,
+		Achiev:    education.Achiev,
+	}
+}
+
+func ToEducationResponses(educations []*domain.Education) []*web.EducationResponse {
+
+	educationResponses := []*web.EducationResponse{}
+	for _, education := range educations {
+		educationResponses = append(educationResponses, ToEducationResponse(education))
+	}
+
+	return educationResponses
+
+}

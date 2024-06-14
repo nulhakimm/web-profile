@@ -13,13 +13,15 @@ type ProfileControllerImpl struct {
 	ProfileService    service.ProfileService
 	ExperienceService service.ExperienceService
 	SkillService      service.SkillService
+	EducationService  service.EducationService
 }
 
-func NewProfileController(profileService service.ProfileService, ExperienceService service.ExperienceService, skillService service.SkillService) ProfileController {
+func NewProfileController(profileService service.ProfileService, ExperienceService service.ExperienceService, skillService service.SkillService, educationService service.EducationService) ProfileController {
 	return &ProfileControllerImpl{
 		ProfileService:    profileService,
 		ExperienceService: ExperienceService,
 		SkillService:      skillService,
+		EducationService:  educationService,
 	}
 }
 
@@ -40,10 +42,16 @@ func (controller *ProfileControllerImpl) ProfileRender(ctx *fiber.Ctx) error {
 		return err
 	}
 
+	education, err := controller.EducationService.Find(ctx.Context())
+	if err != nil {
+		return err
+	}
+
 	return ctx.Render("index", fiber.Map{
 		"Profile":    profile,
 		"Experience": experience,
 		"Skill":      skill,
+		"Education":  education,
 	})
 
 }

@@ -122,8 +122,14 @@
         <div class="education">
           <h3>Education</h3>
           <ul>
-            <li>Degree at Institution 1</li>
-            <li>Degree at Institution 2</li>
+            {{range .Education}}
+            <li><strong>{{.Name}}</strong> - {{.Title}} ({{.EntryYear}}-{{.OutYear}})
+              <p>{{.Address}}</p>
+              {{range .Achiev}}
+              <p>{{.}}</p>
+              {{end}}
+            </li>
+            {{end}}
           </ul>
         </div>
       </div>
