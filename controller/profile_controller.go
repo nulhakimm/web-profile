@@ -1,8 +1,6 @@
 package controller
 
 import (
-	"fmt"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/nulhakimm/web-profile/service"
 )
@@ -14,12 +12,14 @@ type ProfileController interface {
 type ProfileControllerImpl struct {
 	ProfileService    service.ProfileService
 	ExperienceService service.ExperienceService
+	SkillService      service.SkillService
 }
 
-func NewProfileController(profileService service.ProfileService, ExperienceService service.ExperienceService) ProfileController {
+func NewProfileController(profileService service.ProfileService, ExperienceService service.ExperienceService, skillService service.SkillService) ProfileController {
 	return &ProfileControllerImpl{
 		ProfileService:    profileService,
 		ExperienceService: ExperienceService,
+		SkillService:      skillService,
 	}
 }
 
@@ -32,12 +32,18 @@ func (controller *ProfileControllerImpl) ProfileRender(ctx *fiber.Ctx) error {
 
 	experience, err := controller.ExperienceService.Find(ctx.Context())
 	if err != nil {
-		return fmt.Errorf("failed get all data experience : %v", err)
+		return err
+	}
+
+	skill, err := controller.SkillService.Find(ctx.Context())
+	if err != nil {
+		return err
 	}
 
 	return ctx.Render("index", fiber.Map{
 		"Profile":    profile,
 		"Experience": experience,
+		"Skill":      skill,
 	})
 
 }

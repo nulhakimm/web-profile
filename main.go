@@ -13,23 +13,14 @@ func main() {
 	// 	panic(err)
 	// }
 
-	// skillRepo := repository.NewExperienceRepo()
-	// skillService := service.NewExperienceService(skillRepo, db)
+	// skillRepo := repository.NewSkillRepo()
+	// skillService := service.NewSkillService(skillRepo, db)
 
-	// experience := web.ExperienceCreate{
-	// 	CompanyName: "Company 2",
-	// 	Address:     "Jl. Address 01023",
-	// 	Title:       "Manager Comedy",
-	// 	EntryYear:   "2022",
-	// 	OutYear:     "Present",
-	// 	JobDesk: []string{
-	// 		"Give The Boss Comedy",
-	// 		"Roasting Boss",
-	// 		"Roasting All Employee",
-	// 	},
+	// skill := &web.SkillCreate{
+	// 	Name: "postgreSQL",
 	// }
 
-	// skillService.Save(context.Background(), &experience)
+	// skillService.Save(context.Background(), skill)
 
 	engine := html.New("./public/views", ".html")
 

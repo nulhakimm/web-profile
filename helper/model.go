@@ -45,3 +45,21 @@ func ToExperienceResponses(experiences []*domain.Experience) []*web.ExperienceRe
 	return experienceResponses
 
 }
+
+func ToSkillResponse(skill *domain.Skill) *web.SkillResponse {
+	return &web.SkillResponse{
+		Name: skill.Name,
+	}
+}
+
+func ToSkillResponses(skills []*domain.Skill) []*web.SkillResponse {
+
+	skillResponses := []*web.SkillResponse{}
+
+	for _, skill := range skills {
+		skillResponses = append(skillResponses, ToSkillResponse(skill))
+	}
+
+	return skillResponses
+
+}
